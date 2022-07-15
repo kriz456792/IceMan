@@ -8,5 +8,5 @@ StudentWorld.h
 StudentWorld.cpp
 
 Here is an imgae example of the finished product.
-Again, I've already worked on this project. This is siply a redo of my previous work to improve my coding skills.
+Again, I've already worked on this project. This is simply a redo of my previous work to improve my coding skills.
 ![](IceMan_Screen/Capture.PNG)
