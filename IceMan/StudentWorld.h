@@ -33,6 +33,9 @@ public:
 		PALETERO = new Iceman();
 		PALETERO->setVisible(true);
 		
+		p1 = new Sonar(30, 30);
+		p1->setVisible(true);
+		
 		
 		return GWSTATUS_CONTINUE_GAME;
 	}
@@ -53,7 +56,8 @@ public:
 
 private:
 
-	Actor* PALETERO{}; //PALETERO = ICEMAN(SPANISH)
+	Iceman* PALETERO{}; //PALETERO = ICEMAN(SPANISH)
+	Actor* p1{};
 };
 
 #endif // STUDENTWORLD_H_
