@@ -1,7 +1,5 @@
 #include "Actor.h"
 #include "StudentWorld.h"
-
-
 /*
 GraphObject(int imageID, int startX, int startY,DIRECTION startDirection, float size = 1.0,unsigned int depth = 0);
 void setVisible(bool shouldIDisplay);
@@ -12,8 +10,6 @@ DIRECTION getDirection() const; // Directions: up, down, left, right
 void setDirection(DIRECTION d); // Directions: up, down, left, right
 */
 
-
-
 Actor::Actor(int imageID, int startX, int startY, Direction dir, double size, unsigned int depth):
 	GraphObject(imageID, startX, startY, dir, size, depth) {}
 
@@ -21,12 +17,36 @@ Actor::~Actor() { }
 
 
 
-Iceman::Iceman(int imageID, int startX, int startY, Direction dir, double size, unsigned int depth): 
-	Actor (imageID, startX, startY, dir, size, depth) { setVisible(true);}
+Iceman::Iceman(StudentWorld* world, int imageID, int startX, int startY, Direction dir, double size, unsigned int depth) :
+	Actor(imageID, startX, startY, dir, size, depth) { this->world = world; }
+
 
 Iceman::~Iceman() {}
 
-void Iceman::doSomething() { std::cout << "doSomething() Iceman" << std::endl; }
+void Iceman::doSomething() {
+	
+	int ch;
+	if (world->getKey(ch) == true)
+	{
+		// user hit a key this tick!
+		switch (ch)
+		{
+		case KEY_PRESS_LEFT:
+			std::cout << "LEFT" << std::endl;
+			//... move player to the left ...;
+			break;
+		case KEY_PRESS_RIGHT:
+			std::cout << "RIGHT" << std::endl;
+			//... move player to the right ...;
+			break;
+		case KEY_PRESS_SPACE:
+			std::cout << "SPACE" << std::endl;
+			//... add a Squirt in front of the player...;
+			break;
+			// etc...
+		}
+	}
+}
 
 void Iceman::decrease_hit() { hit_points--; }
 void Iceman::decrease_water() { water_num--; }
@@ -49,21 +69,67 @@ int Iceman::get_gold() { return gold_nug; }
 
 
 
-Protester::Protester(int imageID, int startX, int startY, Direction dir, double size, unsigned int depth): 
-	Actor ( imageID, startX, startY, dir, size, depth){}
+Protester::Protester(StudentWorld* world, int imageID, int startX, int startY, Direction dir, double size, unsigned int depth):
+	Actor ( imageID, startX, startY, dir, size, depth){ this->world = world; }
 
 Protester::~Protester(){}
 
-void Protester::doSomething() { std::cout << "doSomething() Protester" << std::endl; }
+void Protester::doSomething() { 
+	
+	int ch;
+	if (world->getKey(ch) == true)
+	{
+		// user hit a key this tick!
+		switch (ch)
+		{
+		case KEY_PRESS_LEFT:
+			std::cout << "P_LEFT" << std::endl;
+			//... move player to the left ...;
+			break;
+		case KEY_PRESS_RIGHT:
+			std::cout << "P_RIGHT" << std::endl;
+			//... move player to the right ...;
+			break;
+		case KEY_PRESS_SPACE:
+			std::cout << "P_SPACE" << std::endl;
+			//... add a Squirt in front of the player...;
+			break;
+			// etc...
+		}
+	}
+}
 
 
 
-HardcoreProtester::HardcoreProtester(int imageID, int startX, int startY, Direction dir, double size, unsigned int depth) :
-	Protester(imageID, startX, startY, dir, size, depth) {}
+HardcoreProtester::HardcoreProtester(StudentWorld* world, int imageID, int startX, int startY, Direction dir, double size, unsigned int depth) :
+	Protester(world, imageID, startX, startY, dir, size, depth) {}
 
 HardcoreProtester::~HardcoreProtester() {}
 
-void HardcoreProtester::doSomething() { std::cout << "doSomething() HProtester" << std::endl; }
+void HardcoreProtester::doSomething() { 
+	
+	int ch;
+	if ( Protester::world->getKey(ch) == true)
+	{
+		// user hit a key this tick!
+		switch (ch)
+		{
+		case KEY_PRESS_LEFT:
+			std::cout << "HP_LEFT" << std::endl;
+			//... move player to the left ...;
+			break;
+		case KEY_PRESS_RIGHT:
+			std::cout << "HP_RIGHT" << std::endl;
+			//... move player to the right ...;
+			break;
+		case KEY_PRESS_SPACE:
+			std::cout << "HP_SPACE" << std::endl;
+			//... add a Squirt in front of the player...;
+			break;
+			// etc...
+		}
+	}
+}
 
 
 

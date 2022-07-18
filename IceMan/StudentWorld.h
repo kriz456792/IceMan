@@ -30,11 +30,14 @@ public:
 
 	virtual int init()
 	{
-		PALETERO = new Iceman();
+		PALETERO = new Iceman(this);
 		PALETERO->setVisible(true);
 		
-		p1 = new Sonar(30, 30);
-		p1->setVisible(true);
+		//p1 = new Protester(this);
+		//p1->setVisible(true);
+
+		p2 = new HardcoreProtester(this);
+		p2->setVisible(true);
 		
 		
 		return GWSTATUS_CONTINUE_GAME;
@@ -43,7 +46,9 @@ public:
 	virtual int move()
 	{
 
-		
+		//PALETERO->doSomething();
+		//p1->doSomething();
+		p2->doSomething();
 		
 		//decLives();
 		return GWSTATUS_CONTINUE_GAME;
@@ -52,12 +57,17 @@ public:
 	virtual void cleanUp()
 	{
 		delete PALETERO;
+		delete p1;
+		//delete p2;
 	}
+
+	
 
 private:
 
 	Iceman* PALETERO{}; //PALETERO = ICEMAN(SPANISH)
 	Actor* p1{};
+	Actor* p2{};
 };
 
 #endif // STUDENTWORLD_H_

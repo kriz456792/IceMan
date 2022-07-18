@@ -3,9 +3,8 @@
 
 #include "GraphObject.h"
 #include "GameConstants.h"
-//class StudentWorld;
 
-
+class StudentWorld;
 
 /*
 GraphObject(int imageID, int startX, int startY,DIRECTION startDirection, float size = 1.0,unsigned int depth = 0);
@@ -16,6 +15,7 @@ void moveTo(int x, int y);
 DIRECTION getDirection() const; // Directions: up, down, left, right
 void setDirection(DIRECTION d); // Directions: up, down, left, right
 */
+
 
 class Actor: public GraphObject{ //Actor is an abstract class where all other classes defined after will inherit it.
 	
@@ -35,8 +35,10 @@ class Iceman : public Actor {
 	int sonar_num{ 1 };
 	int gold_nug{ 0 };
 
+	StudentWorld* world{};
+
 public:
-	Iceman(int imageID = IID_PLAYER, int startX = 30, int startY = 60, Direction dir = right, double size = 1.0, unsigned int depth = 0);
+	Iceman(StudentWorld* world, int imageID = IID_PLAYER, int startX = 30, int startY = 60, Direction dir = right, double size = 1.0, unsigned int depth = 0);
 	~Iceman();
 
 	void doSomething();
@@ -65,8 +67,10 @@ public:
 
 class Protester : public Actor {
 
+protected:
+	StudentWorld* world{};
 public:
-	Protester(int imageID = IID_PROTESTER, int startX = 55, int startY = 60, Direction dir = left, double size = 1.0, unsigned int depth = 1);
+	Protester(StudentWorld* world, int imageID = IID_PROTESTER, int startX = 55, int startY = 60, Direction dir = left, double size = 1.0, unsigned int depth = 1);
 	~Protester();
 
 	virtual void doSomething();
@@ -77,10 +81,10 @@ public:
 class HardcoreProtester : public Protester {
 
 public:
-	HardcoreProtester(int imageID = IID_HARD_CORE_PROTESTER, int startX = 55, int startY = 60, Direction dir = left, double size = 1.0, unsigned int depth = 1);
+	HardcoreProtester(StudentWorld* world, int imageID = IID_HARD_CORE_PROTESTER, int startX = 55, int startY = 60, Direction dir = left, double size = 1.0, unsigned int depth = 1);
 	~HardcoreProtester();
 
-	void doSomething();
+	virtual void doSomething();
 };
 
 
