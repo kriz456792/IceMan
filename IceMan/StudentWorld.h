@@ -36,8 +36,8 @@ public:
 		//p1 = new Protester(this);
 		//p1->setVisible(true);
 
-		p2 = new HardcoreProtester(this);
-		p2->setVisible(true);
+		//p2 = new HardcoreProtester(this);
+		//p2->setVisible(true);
 		
 		
 		return GWSTATUS_CONTINUE_GAME;
@@ -46,9 +46,9 @@ public:
 	virtual int move()
 	{
 
-		//PALETERO->doSomething();
+		PALETERO->doSomething();
 		//p1->doSomething();
-		p2->doSomething();
+		//p2->doSomething();
 		
 		//decLives();
 		return GWSTATUS_CONTINUE_GAME;
@@ -57,7 +57,7 @@ public:
 	virtual void cleanUp()
 	{
 		delete PALETERO;
-		delete p1;
+		//delete p1;
 		//delete p2;
 	}
 

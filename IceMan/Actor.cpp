@@ -39,11 +39,26 @@ void Iceman::doSomething() {
 			std::cout << "RIGHT" << std::endl;
 			//... move player to the right ...;
 			break;
+		case KEY_PRESS_UP:
+			std::cout << "UP" << std::endl;
+			break;
+		case KEY_PRESS_DOWN:
+			std::cout << "DOWN" << std::endl;
+			break;
+		case KEY_PRESS_TAB:
+			std::cout << "TAB" << std::endl;
+			break;
+		case KEY_PRESS_ESCAPE:
+			std::cout << "ESCAPE" << std::endl;
+			break;
+		case 'z':
+		case 'Z':
+			std::cout << "z or Z" << std::endl;
+			break;
 		case KEY_PRESS_SPACE:
 			std::cout << "SPACE" << std::endl;
 			//... add a Squirt in front of the player...;
 			break;
-			// etc...
 		}
 	}
 }
@@ -76,27 +91,6 @@ Protester::~Protester(){}
 
 void Protester::doSomething() { 
 	
-	int ch;
-	if (world->getKey(ch) == true)
-	{
-		// user hit a key this tick!
-		switch (ch)
-		{
-		case KEY_PRESS_LEFT:
-			std::cout << "P_LEFT" << std::endl;
-			//... move player to the left ...;
-			break;
-		case KEY_PRESS_RIGHT:
-			std::cout << "P_RIGHT" << std::endl;
-			//... move player to the right ...;
-			break;
-		case KEY_PRESS_SPACE:
-			std::cout << "P_SPACE" << std::endl;
-			//... add a Squirt in front of the player...;
-			break;
-			// etc...
-		}
-	}
 }
 
 
@@ -107,28 +101,7 @@ HardcoreProtester::HardcoreProtester(StudentWorld* world, int imageID, int start
 HardcoreProtester::~HardcoreProtester() {}
 
 void HardcoreProtester::doSomething() { 
-	
-	int ch;
-	if ( Protester::world->getKey(ch) == true)
-	{
-		// user hit a key this tick!
-		switch (ch)
-		{
-		case KEY_PRESS_LEFT:
-			std::cout << "HP_LEFT" << std::endl;
-			//... move player to the left ...;
-			break;
-		case KEY_PRESS_RIGHT:
-			std::cout << "HP_RIGHT" << std::endl;
-			//... move player to the right ...;
-			break;
-		case KEY_PRESS_SPACE:
-			std::cout << "HP_SPACE" << std::endl;
-			//... add a Squirt in front of the player...;
-			break;
-			// etc...
-		}
-	}
+
 }
 
 
